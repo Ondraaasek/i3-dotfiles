@@ -16,16 +16,23 @@ default_border pixel 2
 # is used in the bar {} block below.
 font pango:Ubuntu Regular 14
 exec_always picom -f
-exec_always feh --bg-scale ~/wallpapers/among-trees.jpg
+exec_always feh --bg-scale ~/wallpapers/utah.jpg
 exec_always ~/i3-alternating-layout/alternating_layouts.py
+exec_always xrandr --output HDMI-1 --mode 2560x1440 --rate 144
+exec_always --no-startup-id pulseaudio 
+exec_always --no-startup-id start-pulseaudio-x11
+exec_always --no-startup-id wireplumber
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
-
+exec_always "setxkbmap -layout us,cz"
+exec_always "setxkbmap -option 'grp:alt_shift_toggle'"
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id dex --autostart --environment i3
 exec_always dunst
+# class                         border          background      text            indicator       child_border
+client.focused                  #FFFFFF         #FFFFFF         #ffff33         $coloratt       #FFFFFF
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
 
@@ -120,13 +127,16 @@ bindsym $mod+a focus parent
 set $ws1 "1:  Terminal"
 set $ws2 "2:  Browser"
 set $ws3 "3: Discord"
-set $ws4 "4"
-set $ws5 "5"
-set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8"
-set $ws9 "9"
-set $ws10 "10"
+#set $ws1 "1"
+#set $ws2 "2"
+#set $ws3 "3"
+set $ws4 "4: Extra term"
+set $ws5 "5: Configs"
+set $ws6 "6: Random"
+set $ws7 "7: Random"
+set $ws8 "8: Random"
+set $ws9 "9: Random"
+set $ws10 "10: Testing"
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
@@ -192,6 +202,8 @@ bindsym $mod+r mode "resize"
 #        status_command i3status -c ~/.config/i3status/i3status.conf && ~/.config/scripts/volume
 #	
 #}
-bar {
-	status_command i3blocks -c ~/.config/i3blocks/i3blocks.conf
-}
+#bar {
+#	status_command i3blocks -c ~/.config/i3blocks/i3blocks.conf
+#	position top
+#}
+exec_always polybar
