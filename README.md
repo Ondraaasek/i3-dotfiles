@@ -7,4 +7,4 @@ Dependencies / reccomendations
 - pulseaudio
 - wireplumber
 - nwg-look
-- i3blocks
+- polybar
